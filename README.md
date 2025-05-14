@@ -19,14 +19,15 @@
 
 ## Introducción
 
-Breve descripción del proyecto: simular una red hospitalaria con routers, switches y dispositivos, gestionar el estado de la red mediante una aplicación web y automatizar la monitorización usando Python.
+Este proyecto consiste en la simulación de la infraestructura de red de dos hospitales independientes utilizando GNS3. Cada hospital cuenta con su propia red local y está gestionado por dos routers: un router principal (master) y un router de respaldo (backup), lo que permite asegurar la continuidad del servicio en caso de fallos.
+
+Como complemento, se ha desarrollado una aplicación web con Python, desde la cual es posible gestionar y monitorizar el estado de todos los routers en ambas redes. Esta herramienta permite detectar en tiempo real si un router está activo o caído, y ofrece una interfaz centralizada para la supervisión del estado de la infraestructura de red de cada hospital.
 
 ## Objetivos
 
 - Diseñar una red hospitalaria realista en GNS3.
-- Automatizar la supervisión de dispositivos de red.
-- Desarrollar una aplicación web para mostrar el estado de la red.
-- Utilizar herramientas modernas de programación (Python, Flask/Django, etc.).
+- Desarrollar una aplicación web para mostrar el estado de los routers.
+- Poder acceder a los routers desde la aplicación web.
 
 ## Tecnologías Utilizadas
 
@@ -39,23 +40,23 @@ Breve descripción del proyecto: simular una red hospitalaria con routers, switc
 
 ## Diseño de la Red
 
+![image](https://github.com/user-attachments/assets/c414bddf-c0a9-4e68-9ddf-15173d80badf)
+
 Describe:
-- Cuántos routers, switches y PCs usaste.
-- Qué representa cada parte (área quirúrgica, laboratorio, administración...).
-- Añade un diagrama (puede ser una imagen exportada de GNS3).
+- Hay cuatro routers (dos para cada hospital), dos switches (uno cada hospital) y dos equipos para sumilar los equipos de un hospital (uno para cada hospital).
+- La imagén se basa en dos hospitales: hospital de Badajóz y hospital de Mérida.
 
 ## Configuración en GNS3
 
-- Descripción de cómo configuraste los routers.
-- Configuración de IPs, protocolos de enrutamiento (OSPF, RIP...).
-- Scripts o comandos usados.
+- Hay un archivo llamado configuración de los routers donde aparece los running config de los routers.
 
 ## Desarrollo de la Aplicación Web
 
-- Qué hace tu aplicación.
-- Framework usado (Flask, Django...).
-- Cómo se comunica con los routers (via SSH, SNMP...).
-- Capturas de pantalla si es posible.
+- Wocu es una aplicación web desarrollada en Python que permite gestionar y monitorizar routers de manera centralizada a través de una interfaz intuitiva. Su objetivo principal es facilitar la supervisión del estado de la infraestructura de red de cada hospital simulado en el proyecto.
+- La manera en la que Wocu se comunica con los routers es mediante SNMP (Simple Network Management Protocol), un protocolo estándar ampliamente utilizado para la monitorización y gestión de dispositivos de red. Wocu actúa como un cliente SNMP, enviando solicitudes a los routers y procesando las respuestas para mostrarlas de forma clara y visual al usuario.
+
+![image](https://github.com/user-attachments/assets/159f6451-48e9-4f3c-8106-a77543dd5e0a)
+
 
 ## Monitorización y Gestión de Routers
 
