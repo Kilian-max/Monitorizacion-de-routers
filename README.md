@@ -81,22 +81,22 @@ import netmiko
 
 ## Pruebas Realizadas
 
--Qué pruebas hiciste para asegurar el funcionamiento (apagar routers, cortar interfaces...).
--Resultados esperados y observados.
+- Qué pruebas hiciste para asegurar el funcionamiento (apagar routers, cortar interfaces...).
+- Resultados esperados y observados.
 
 ## Resultados y Capturas
 
--Muestra ejemplos visuales del sistema funcionando.
--Estado de routers, logs generados, interfaz web...
+- Muestra ejemplos visuales del sistema funcionando.
+- Estado de routers, logs generados, interfaz web...
 
 ## Conclusiones
 
--Qué aprendiste.
--Qué desafíos encontraste y cómo los resolviste.
+- Qué aprendiste.
+- Qué desafíos encontraste y cómo los resolviste.
 
 ## Posibles Mejoras
 
--Integrar una base de datos.
--Dashboard más visual.
--Alertas por correo o Telegram.
--Escalabilidad para más nodos.
+- Integrar una base de datos.
+- Dashboard más visual.
+- Alertas por correo o Telegram.
+- Escalabilidad para más nodos.
