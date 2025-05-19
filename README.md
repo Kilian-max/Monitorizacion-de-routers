@@ -67,14 +67,14 @@ Describe:
 
 Incluye aquí fragmentos de:
 - Código Python para conexión/monitorización.
-- 
+
 ```python
-import netmiko
+hola
 ```
 - Scripts importantes.
 
 ```JavaScrpt
-import netmiko
+hola
 ```
 # Código para conectarse a un router y verificar estado
 
