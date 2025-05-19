@@ -47,6 +47,11 @@ Describe:
 
 ## Configuración en GNS3
 
+- Algunas configuraciones importantes han sido
+-- VRRP: Para que cuando el router MASTER caiga se levante el de BACKUP
+-- sadasda
+-- asdasd
+
 - Hay un archivo llamado configuración de los routers donde aparece los running config de los routers.
 
 ## Desarrollo de la Aplicación Web
