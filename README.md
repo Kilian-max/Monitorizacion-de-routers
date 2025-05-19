@@ -55,7 +55,7 @@ Describe:
 - Wocu es una aplicación web desarrollada en Python que permite gestionar y monitorizar routers de manera centralizada a través de una interfaz intuitiva. Su objetivo principal es facilitar la supervisión del estado de la infraestructura de red de cada hospital simulado en el proyecto.
 - La manera en la que Wocu se comunica con los routers es mediante SNMP (Simple Network Management Protocol), un protocolo estándar ampliamente utilizado para la monitorización y gestión de dispositivos de red. Wocu actúa como un cliente SNMP, enviando solicitudes a los routers y procesando las respuestas para mostrarlas de forma clara y visual al usuario.
 
-![image](https://github.com/user-attachments/assets/159f6451-48e9-4f3c-8106-a77543dd5e0a)
+![image](https://github.com/user-attachments/assets/72babb21-1821-4d04-a8b3-8bdcff004b3c)
 
 
 ## Monitorización y Gestión de Routers
