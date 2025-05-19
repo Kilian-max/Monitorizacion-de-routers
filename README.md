@@ -32,11 +32,11 @@ Como complemento, se ha desarrollado una aplicación web con Python, desde la cu
 ## Tecnologías Utilizadas
 
 - GNS3
-- Python (con librerías como Netmiko, Paramiko, Flask)
-- HTML/CSS/JavaScript
-- Bootstrap/Tailwind (si usaste algún framework)
-- SNMP o ping (para monitoreo)
-- GitHub para versionado y documentación
+- Python con falsk
+- HTML/JavaScript
+- Bootstrap/Tailwind
+- SNMP
+- GitHub para la documentación
 
 ## Diseño de la Red
 
@@ -60,9 +60,9 @@ Describe:
 
 ## Monitorización y Gestión de Routers
 
-- Cómo detectas si un router está caído o no (ping, SNMP, SSH).
-- Cómo se refleja esa información en tu página.
-- Automatización: ¿cada cuánto se actualiza?, ¿usas hilos o cron jobs?
+- Para detectar si un router está caído o activo se utiliza el protocolo SNMP (Simple Network Management Protocol). La aplicación realiza consultas SNMP a cada router, si el dispositivo responde correctamente, se considera que está encendido y operativo. En cambio, si no se recibe respuesta, se interpreta que el router está apagado o inaccesible.
+- La aplicación permite personalizar la información SNMP que se desea visualizar de cada router, adaptándose a las necesidades del usuario o al entorno de red, si clickas ![aquí](https://mibbrowser.online/mibdb_search.php) podrás ver algunos OID's para usar.
+
 
 ## Código Fuente Relevante
 
