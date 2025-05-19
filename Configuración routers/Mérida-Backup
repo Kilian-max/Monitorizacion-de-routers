@@ -1,17 +1,16 @@
-Current configuration : 5560 bytes
-!
-! Last configuration change at 18:30:54 UTC Wed May 14 2025
+Current configuration : 5616 bytes
 !
 version 15.2
 service timestamps debug datetime msec
 service timestamps log datetime msec
 !
-hostname R4
+hostname MERIDA-BACKUP
 !
 boot-start-marker
 boot-end-marker
 !
 !
+enable password 1234
 !
 no aaa new-model
 no ip icmp rate-limit unreachable
@@ -20,7 +19,7 @@ no ip icmp rate-limit unreachable
 !
 !
 !
-!         
+!
 ip name-server 10.0.0.1
 ip cef
 no ipv6 cef
@@ -43,8 +42,8 @@ ip tcp synwait-time 5
 ! 
 !
 !
-!         
 !
+!         
 !
 !
 !
@@ -56,7 +55,7 @@ interface Ethernet0/0
 !
 interface GigabitEthernet0/0
  description WAN
- ip address 10.0.0.5 255.255.255.0
+ ip address 10.0.0.3 255.255.255.0
  ip nat outside
  media-type gbic
  speed 1000
@@ -65,10 +64,11 @@ interface GigabitEthernet0/0
 !
 interface GigabitEthernet1/0
  description LAN
- ip address 192.168.10.1 255.255.255.0
+ ip address 192.168.10.2 255.255.255.0
  ip nat inside
  negotiation auto
  vrrp 30 ip 192.168.10.254
+ vrrp 30 priority 200
 !
 ip nat inside source list 1 interface GigabitEthernet0/0 overload
 ip forward-protocol nd
@@ -82,7 +82,7 @@ access-list 1 permit 192.168.10.0 0.0.0.255
 !
 snmp-server community public RO
 snmp-server community COMUNIDAD_RO RO
-snmp-server location BADAJOZ-BACKUP
+snmp-server location MERIDA-BACKUP
 snmp-server enable traps snmp authentication linkdown linkup coldstart warmstart
 snmp-server enable traps vrrp
 snmp-server enable traps pfr
@@ -198,7 +198,10 @@ line aux 0
  logging synchronous
  stopbits 1
 line vty 0 4
- login
-!
+ privilege level 15
+ password 1234
+ login local
+ transport input telnet
+!         
 !
 end
