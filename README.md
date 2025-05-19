@@ -61,7 +61,7 @@ Describe:
 ## Monitorización y Gestión de Routers
 
 - Para detectar si un router está caído o activo se utiliza el protocolo SNMP (Simple Network Management Protocol). La aplicación realiza consultas SNMP a cada router, si el dispositivo responde correctamente, se considera que está encendido y operativo. En cambio, si no se recibe respuesta, se interpreta que el router está apagado o inaccesible.
-- La aplicación permite personalizar la información SNMP que se desea visualizar de cada router, adaptándose a las necesidades del usuario o al entorno de red, si clickas ![aquí](https://mibbrowser.online/mibdb_search.php) podrás ver algunos OID's para usar.
+- La aplicación permite personalizar la información SNMP que se desea visualizar de cada router, adaptándose a las necesidades del usuario o al entorno de red, si clickas [aquí](https://mibbrowser.online/mibdb_search.php) podrás ver algunos OID's para usar.
 
 
 ## Código Fuente Relevante
