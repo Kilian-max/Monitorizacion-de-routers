@@ -34,7 +34,6 @@ Como complemento, se ha desarrollado una aplicación web con Python, desde la cu
 - GNS3
 - Python con falsk
 - HTML/JavaScript
-- Bootstrap/Tailwind
 - SNMP
 - GitHub para la documentación
 
@@ -68,36 +67,29 @@ Describe:
 
 Incluye aquí fragmentos de:
 - Código Python para conexión/monitorización.
-- Código HTML de la página principal.
-- Scripts usados para automatizar.
-
-Puedes usar bloques de código:
-
+- 
 ```python
+import netmiko
+```
+- Scripts importantes.
+
+```JavaScrpt
 import netmiko
 ```
 # Código para conectarse a un router y verificar estado
 
+
 ## Código Fuente Relevante
+
 
 ## Pruebas Realizadas
 
-- Qué pruebas hiciste para asegurar el funcionamiento (apagar routers, cortar interfaces...).
-- Resultados esperados y observados.
 
 ## Resultados y Capturas
 
-- Muestra ejemplos visuales del sistema funcionando.
-- Estado de routers, logs generados, interfaz web...
 
 ## Conclusiones
 
-- Qué aprendiste.
-- Qué desafíos encontraste y cómo los resolviste.
 
 ## Posibles Mejoras
 
-- Integrar una base de datos.
-- Dashboard más visual.
-- Alertas por correo o Telegram.
-- Escalabilidad para más nodos.
