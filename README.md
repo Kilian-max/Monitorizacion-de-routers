@@ -10,10 +10,12 @@
 6. [Desarrollo de la Aplicación Web](#desarrollo-de-la-aplicación-web)
 7. [Monitorización y Gestión de Routers](#monitorización-y-gestión-de-routers)
 8. [Código Fuente Relevante](#código-fuente-relevante)
-9. [Pruebas Realizadas](#pruebas-realizadas)
-10. [Resultados y Capturas](#resultados-y-capturas)
-11. [Conclusiones](#conclusiones)
-12. [Posibles Mejoras](#posibles-mejoras)
+9. [Manual Técnico](#manual-técnico)
+10. [Manual Usuario](#manual-usuario)
+11. [Pruebas Realizadas](#pruebas-realizadas)
+12. [Resultados y Capturas](#resultados-y-capturas)
+13. [Conclusiones](#conclusiones)
+14. [Posibles Mejoras](#posibles-mejoras)
 
 ---
 
@@ -84,7 +86,19 @@ hola
 # Código para conectarse a un router y verificar estado
 
 
-## Código Fuente Relevante
+
+## Manual Técnico
+
+Aquí explicaremos paso a paso los detalles y como se ha ido creando la estructura de red, la aplicación y sus funcionamientos.
+
+Hemos usado la aplicación GNS3, en esta aplicación hay que importar las ISO de los equipos para poder crear la estructura de red. Te descargas la IOS de los routers por [aquí](https://lomboknetworking.blogspot.com/p/cisco-ios-gns3.html).
+
+En GNS3 Edit->Preferences-> IOS Routers. Le das en New y seleccionas la IOS descargada y vas configurando el router a tu gusto.
+![image](https://github.com/user-attachments/assets/4da44ae4-49f3-446c-b176-d2e142624a00)
+
+
+
+## Manual Usuario
 
 
 ## Pruebas Realizadas
