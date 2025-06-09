@@ -12,10 +12,8 @@
 8. [Código Fuente Relevante](#código-fuente-relevante)
 9. [Manual Técnico](#manual-técnico)
 10. [Manual Usuario](#manual-usuario)
-11. [Pruebas Realizadas](#pruebas-realizadas)
-12. [Resultados y Capturas](#resultados-y-capturas)
-13. [Conclusiones](#conclusiones)
-14. [Posibles Mejoras](#posibles-mejoras)
+11. [Conclusiones](#conclusiones)
+12. [Posibles Mejoras](#posibles-mejoras)
 
 ---
 
