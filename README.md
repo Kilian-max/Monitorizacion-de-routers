@@ -12,7 +12,6 @@
 8. [Código Fuente Relevante](#código-fuente-relevante)
 9. [Manual Técnico](#manual-técnico)
 10. [Manual Usuario](#manual-usuario)
-11. [Conclusiones](#conclusiones)
 12. [Posibles Mejoras](#posibles-mejoras)
 
 ---
@@ -298,8 +297,6 @@ Aquí podremos ver una gráfica de la conectividad del router y las interfaces q
 Si necesitamos hacer pruebas a los routers, nos podremos conectar a ellos con ssh. Abrimos la terminal y ejecutamos lo siguiente, el usuario que en este caso será siempre admin y la IP del router que queramos acceder.
 
 ![image](https://github.com/user-attachments/assets/e594ebcd-ed3d-456e-93e2-c96b42441fd5)
-
-## Conclusiones
 
 
 ## Posibles Mejoras
