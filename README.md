@@ -27,12 +27,12 @@ Como complemento, se ha desarrollado una aplicación web con Python, desde la cu
 
 - Diseñar una red hospitalaria realista en GNS3.
 - Desarrollar una aplicación web para mostrar el estado de los routers.
-- Poder acceder a los routers desde la aplicación web.
+- Poder acceder a los routers con ssh.
 
 ## Tecnologías Utilizadas
 
 - GNS3
-- Python con falsk
+- Python con Flask
 - HTML/JavaScript
 - SNMP
 - GitHub para la documentación
@@ -49,8 +49,8 @@ Describe:
 
 - Algunas configuraciones importantes han sido:
   - **VRRP**: Para que cuando el router MASTER caiga se levante el de BACKUP
-  - **sadasda**
-  - **asdasd**
+  - **NAT** (Network Address Translation): Para permitir que los dispositivos dentro de cada red local puedan acceder a internet mediante el router. 
+  - **SNMP** (Simple Network Management Protocol): Para habilitar la monitorización remota de los routers desde la aplicación web. 
 
 - Hay un archivo llamado configuración de los routers donde aparece los running config de los routers.
 
@@ -268,6 +268,11 @@ const history = data.data.history || [];
 ```
 El código JavaScript hace una consulta al backend en Python, que responde con datos en JSON. La información del historial proviene de una variable global llamada HISTORY, donde se guarda el estado de conectividad del router.
 
+Una cosa importante que se ha hecho es que para poder conectarse con ssh a los routers, como las versiones de GNS3 no son las modernas ya no era compatible conectarse. Por lo tanto se ha tenido que editar ```/home/kilian/.ssh/config``` para que cuando te quieras conectar a una IP que empiece por 10.0.0.x, te lo permita independientemente de la versión de ssh.
+
+![image](https://github.com/user-attachments/assets/6dbd8309-65a6-4867-991d-949cad70bf4b)
+
+
 # Manual Usuario
 
 Para encender la aplicación nos tendremos que ir a nuestra carpeta de trabajo y ejecutar app.py.
@@ -298,4 +303,10 @@ Si necesitamos hacer pruebas a los routers, nos podremos conectar a ellos con ss
 
 
 ## Posibles Mejoras
+
+Aunque el proyecto cumple con los objetivos planteados, existen varias áreas donde se podrían introducir mejoras o nuevas funcionalidades:
+
+-Implementar notificaciones por email, Telegram o Slack si un router se cae.
+
+-Añadir Dashboard más avanzados que den más imformación
 
