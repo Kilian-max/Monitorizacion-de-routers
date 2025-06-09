@@ -69,24 +69,6 @@ Describe:
 - Para detectar si un router está caído o activo se utiliza el protocolo SNMP (Simple Network Management Protocol). La aplicación realiza consultas SNMP a cada router, si el dispositivo responde correctamente, se considera que está encendido y operativo. En cambio, si no se recibe respuesta, se interpreta que el router está apagado o inaccesible.
 - La aplicación permite personalizar la información SNMP que se desea visualizar de cada router, adaptándose a las necesidades del usuario o al entorno de red, si clickas [aquí](https://mibbrowser.online/mibdb_search.php) podrás ver algunos OID's para usar.
 
-
-## Código Fuente Relevante
-
-Incluye aquí fragmentos de:
-- Código Python para conexión/monitorización.
-
-```python
-hola
-```
-- Scripts importantes.
-
-```JavaScrpt
-hola
-```
-# Código para conectarse a un router y verificar estado
-
-
-
 # Manual Técnico
 
 Aquí explicaremos paso a paso los detalles y como se ha ido creando la estructura de red, la aplicación y sus funcionamientos.
@@ -198,15 +180,121 @@ Esta configuración la repetiriamos en todos los routers cambiando 2 cosas, las 
 
 Ahora viene la configuración de la aplicación para recoger todas las peticiones que manda SNMP y traducirlas a algo que sea facil de interpretar en nuestra aplicación web.
 
+```python
+from flask import Flask, jsonify, send_from_directory, request
+from pysnmp.hlapi import SnmpEngine, CommunityData, UdpTransportTarget, ContextData, ObjectType, ObjectIdentity, getCmd
+from flask_cors import CORS
+```
+Se importan librerías:
+
+```Flask```: el framework web (sirve para crear el servidor web).
+
+```jsonify```: convierte datos de Python en JSON para enviar al navegador.
+
+```send_from_directory```: sirve para enviar archivos HTML u otros del servidor al navegador.
+
+```request```: permite leer datos que llegan al servidor (por ejemplo, de formularios).
+
+```pysnmp.hlapi```: se usa para enviar comandos SNMP (una forma de obtener info de routers/switches).
+
+```CORS```: permite que otras páginas web accedan a esta API (muy útil si tienes frontend separado del backend).
+
+```python
+app = Flask(__name__, static_folder='public')
+CORS(app)
+```
+
+```app = Flask(__name__)```: crea la app Flask. Es el "servidor web".
+
+```static_folder='public'```: le dice a Flask que los archivos HTML, CSS, JS están en la carpeta public.
+
+```CORS(app)```: permite que cualquier frontend se conecte sin restricciones de origen.
+
+```python
+DEVICES = [
+    {
+        "name": "MERIDA-MASTER",
+        "ip": "10.0.0.2",
+        "community": "COMUNIDAD_RO",
+        "oids": {
+            "uptime": "1.3.6.1.2.1.1.3.0",
+            "interfaces": {
+                "name": "1.3.6.1.2.1.2.2.1.2",
+                "status": "1.3.6.1.2.1.2.2.1.8",
+                "rx": "1.3.6.1.2.1.2.2.1.10",
+                "tx": "1.3.6.1.2.1.2.2.1.16"
+            }
+        }
+    }
+...
+```
+Dentro de DEVICES es donde guardaremos los routers que vamos a monitorear por SNMP y los datos que queremos mostrar de cada uno.
+
+```python
+if __name__ == "__main__":
+    app.run(debug=True, host="0.0.0.0", port=5000)
+```
+Este comando hace que el servidor Flask se ejecute en el puerto 5000 y escuche todas las IPs
+
+Ahora explicaré las partes importantes de mi código de JavaScrpt.
+
+```JavaScrpt
+const response = await fetch("/api/devices");
+const devices = await response.json();
+```
+Con este codígo se conecta a la aplicacíon de python y le pide los datos de los routers definidos.
+
+```JavaScrpt
+.forEach(device => {
+            let estado = "Encendido";
+            let statusClass = "has-text-success";
+
+            for (const key in device.data) {
+              const val = device.data[key];
+              if (
+                val.toLowerCase().includes("timeout") ||
+                val.toLowerCase().includes("no such") ||
+                val.toLowerCase().includes("error")
+              ) {
+                estado = "Apagado";
+                statusClass = "has-text-danger";
+                break;
+              }
+            }
+```
+
+Si el router da señales, en la página aparecerá como "Encendido", pero si da algún error, tarda demasido o no se encuentra, aparecerá como "Apagado".
+
+```JavaScrpt
+const history = data.data.history || [];
+```
+El código JavaScript hace una consulta al backend en Python, que responde con datos en JSON. La información del historial proviene de una variable global llamada HISTORY, donde se guarda el estado de conectividad del router.
 
 # Manual Usuario
 
+Para encender la aplicación nos tendremos que ir a nuestra carpeta de trabajo y ejecutar app.py.
 
-## Pruebas Realizadas
+Activamos el entorno virtual para poder usar Python y ejecutamos la aplicación, veremos que empezarán a llegar las peticiones que hace la aplicación.
 
+![image](https://github.com/user-attachments/assets/85f573d2-4aa1-46cd-a5a1-a047efff6a6c)
 
-## Resultados y Capturas
+Una vez la aplicacíon está en marcha, nos dirijiremos a nuestro navegador y nos entraremos a la siguiente direccion [http://localhost:5000/](http://localhost:5000/) que es el puerto donde se está ejecutando la aplicación.
 
+Tendremos que poner nuestras credenciales para acceder.
+
+![image](https://github.com/user-attachments/assets/0257723e-8b17-4e03-ad59-6681924b97b4)
+
+Una vez acedemos, nos aparecerán los routers que estamos monitorizando y algo de información de cada uno. Si seleccionamos alguno de ellos, nos llevará a otra página donde nos dará más información.
+
+![image](https://github.com/user-attachments/assets/4445c8c5-ded7-4603-8e33-ee6c1710135c)
+
+Aquí podremos ver una gráfica de la conectividad del router y las interfaces que tiene levantadas o bajadas.
+
+![image](https://github.com/user-attachments/assets/031e9af7-8949-49fa-b240-0dbd408d6113)
+
+Si necesitamos hacer pruebas a los routers, nos podremos conectar a ellos con ssh. Abrimos la terminal y ejecutamos lo siguiente, el usuario que en este caso será siempre admin y la IP del router que queramos acceder.
+
+![image](https://github.com/user-attachments/assets/e594ebcd-ed3d-456e-93e2-c96b42441fd5)
 
 ## Conclusiones
 
